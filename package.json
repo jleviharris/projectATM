@@ -1,0 +1,20 @@
+{
+  "name": "atm",
+  "version": "1.0.0",
+  "description": "devCodeCamp week 3 project ATM",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jleviharris/projectATM.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jleviharris/projectATM/issues"
+  },
+  "homepage": "https://github.com/jleviharris/projectATM#readme"
+}
