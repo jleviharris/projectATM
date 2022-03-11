@@ -4,3 +4,6 @@ console.log('hello node.js')
 // user interaction
 // what the user sees
 
+const functions = require('./atm');
+
+functions.validatePin;

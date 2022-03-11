@@ -6,7 +6,8 @@ let personalAccount = [
         'lastName': 'Harris',
         'acountNumber': '123456789',
         'accountBalance': 100000,
-        'acountType': 'checking'
+        'acountType': 'checking',
+        'accountPin': 1234
     }
 ];
 
