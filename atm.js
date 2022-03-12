@@ -4,21 +4,16 @@
 const prompt = require('prompt-sync')();
 const {personalAccount} = require('./account');
 let {firstName, lastName, accountNumber, accountBalance, accountType, accountPin} = personalAccount;
-// getBalance function
-// call the peersonalAccount.accountBalance
-//console.log or alert the account balance 
+
 function getBalance(){
     console.log(`$${accountBalance}`);
 };
+function info(){
+    console.log(`${firstName} ${lastName} \n${accountType}\nAccount Number - ${accountNumber}\nAccount Balance $${accountBalance}\n${accountPin}`);
+};
 
-// withdraw function
-// pull the accountBalance
-// take in an input for how much to withdraw
-// change the account balance to the old balance - the withdraw ammount
-// validate that the withdraw ammount is not greater than the present account balance
-// alert or console log the new balance
 function withdraw(){
-    let withdrawAmount = parseInt(prompt(`Your balance is $${accountBalance}, how much would you like to withdraw?`));
+    let withdrawAmount = parseInt(prompt(`Your balance is $${accountBalance}, how much would you like to withdraw? `));
     if (withdrawAmount > accountBalance){
         console.log(`Not enough in account`);
     } else {
@@ -49,9 +44,26 @@ function validatePin (){
     }else if(userInput === accountPin) {console.log('Welcome');}
 };
 
+function changePin (){
+    userInput = parseInt(prompt(`Please enter your new 4 digit pin number.`));
+    while (userInput.toString().length !== 4){
+        console.log(`Pin must be 4 digits`);
+        changePin();
+    };
+        let userInputTwo = parseInt(prompt('Please re-enter your new pin number'));
+        if (userInputTwo !== userInput){
+            console.log(`The pins did not match`);
+            changePin();
+        } else if (userInputTwo === userInput){
+            accountPin = userInput;
+            console.log(`Your new pin is ${userInput}`);
+        }
+    } 
 
 
 
+module.exports.info = info;
+module.exports.changePin = changePin;
 module.exports.validatePin = validatePin;
 module.exports.deposit = deposit;
 module.exports.withdraw = withdraw;
