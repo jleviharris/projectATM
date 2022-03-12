@@ -8,7 +8,7 @@ let {firstName, lastName, accountNumber, accountBalance, accountType, accountPin
 // call the peersonalAccount.accountBalance
 //console.log or alert the account balance 
 function getBalance(){
-    console.log(`${accountBalance}`);
+    console.log(`$${accountBalance}`);
 };
 
 // withdraw function
@@ -18,12 +18,12 @@ function getBalance(){
 // validate that the withdraw ammount is not greater than the present account balance
 // alert or console log the new balance
 function withdraw(){
-    let withdrawAmount = parseInt(prompt(`Your balance is ${accountBalance}, how much would you like to withdraw?`));
+    let withdrawAmount = parseInt(prompt(`Your balance is $${accountBalance}, how much would you like to withdraw?`));
     if (withdrawAmount > accountBalance){
         console.log(`Not enough in account`);
     } else {
         accountBalance = accountBalance - withdrawAmount;
-        console.log(`Your new balance is ${accountBalance}`);
+        console.log(`Your new balance is $${accountBalance}`);
     }
 };
 
@@ -46,7 +46,7 @@ function validatePin (){
     if (userInput !== accountPin){
         console.log('Incorrect Pin');
         validatePin();
-    }else if(userInput === accountPin) {console.log('Welcome')}
+    }else if(userInput === accountPin) {console.log('Welcome');}
 };
 
 
