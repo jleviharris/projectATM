@@ -1,6 +1,5 @@
-// import account info
-//functionality
-// add functions get balance... 
+"use strict"
+let {wallet} = require('./wallet');
 const prompt = require('prompt-sync')();
 const {personalAccount} = require('./account');
 let {firstName, lastName, accountNumber, accountBalance, accountType, accountPin} = personalAccount;
@@ -8,6 +7,9 @@ let {firstName, lastName, accountNumber, accountBalance, accountType, accountPin
 function getBalance(){
     console.log(`$${accountBalance}`);
 };
+function checkWallet(){
+    console.log(`There is $${wallet} in your wallet.`);
+}
 function info(){
     console.log(`${firstName} ${lastName} \n${accountType}\nAccount Number - ${accountNumber}\nAccount Balance $${accountBalance}\n${accountPin}`);
 };
@@ -19,6 +21,9 @@ function withdraw(){
     } else {
         accountBalance = accountBalance - withdrawAmount;
         console.log(`Your new balance is $${accountBalance}`);
+        let newWallet= wallet + withdrawAmount;
+        wallet = newWallet;
+        checkWallet();
     }
 };
 
@@ -28,28 +33,35 @@ function withdraw(){
 // add input to the account balance
 //alert or console log the new balance
 function deposit(){
-    userInput = parseInt(prompt('How much would you like to deposit'));
+    let userInput = parseInt(prompt('How much would you like to deposit?'));
+    if (wallet<userInput){
+        console.log('Not enough money in wallet')
+    } else if (wallet>= userInput){
     let newBalance = accountBalance + userInput;
+    let newWallet = wallet - userInput;
     accountBalance = newBalance;
-    return newBalance;
+    wallet = newWallet;
+    console.log(`Your new balance is $${accountBalance}`);
+    checkWallet();};
 };
 
 
 // validatePin function
 function validatePin (){
-    userInput = parseInt(prompt(`${firstName} ${lastName}, Please enter your pin`));
+   let userInput = parseInt(prompt(`${firstName} ${lastName}, Please enter your pin`));
     if (userInput !== accountPin){
         console.log('Incorrect Pin');
         validatePin();
-    }else if(userInput === accountPin) {console.log('Welcome');}
+    }else if(userInput === accountPin) {
+        console.log('Welcome');}
 };
 
 function changePin (){
-    userInput = parseInt(prompt(`Please enter your new 4 digit pin number.`));
-    while (userInput.toString().length !== 4){
+    let userInput = parseInt(prompt(`Please enter your new 4 digit pin number.`));
+    if (userInput.toString().length !== 4){
         console.log(`Pin must be 4 digits`);
         changePin();
-    };
+    }else {
         let userInputTwo = parseInt(prompt('Please re-enter your new pin number'));
         if (userInputTwo !== userInput){
             console.log(`The pins did not match`);
@@ -58,10 +70,10 @@ function changePin (){
             accountPin = userInput;
             console.log(`Your new pin is ${userInput}`);
         }
-    } 
+    } }
 
 
-
+module.exports.checkWallet = checkWallet;
 module.exports.info = info;
 module.exports.changePin = changePin;
 module.exports.validatePin = validatePin;

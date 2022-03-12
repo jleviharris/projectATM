@@ -1,11 +1,9 @@
 "use strict"
 console.log('hello node.js')
-// prompts
-// user interaction
-// what the user sees
 const prompt = require('prompt-sync')();
 const functions = require('./atm');
 // const personalAccount = require('./account');
+functions.checkWallet();
 functions.validatePin();
 mainMenu();
 

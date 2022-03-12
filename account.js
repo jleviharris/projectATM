@@ -1,5 +1,4 @@
-// add object with name, ***pin #, ***account balance, account #.....
-
+"use strict"
 let personalAccount = 
     {
         'firstName': 'Jon',
