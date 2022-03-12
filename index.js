@@ -18,9 +18,11 @@ mainMenu();
         break;
         case 2:
         functions.withdraw();
+        mainMenu();
         break;
         case 3:
         functions.deposit();
+        mainMenu();
         break;
         case 0:
         console.log('Goodbye');
