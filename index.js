@@ -5,5 +5,9 @@ console.log('hello node.js')
 // what the user sees
 
 const functions = require('./atm');
+// const personalAccount = require('./account');
+functions.validatePin();
 
-functions.validatePin;
+// function mainMenu (userInput){
+
+// }
